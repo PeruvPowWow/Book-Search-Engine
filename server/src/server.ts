@@ -4,7 +4,7 @@ import type { Request, Response } from 'express';
 import db from './config/connection.js';
 import { ApolloServer } from '@apollo/server'; // Note: Import from @apollo/server-express 
 import { expressMiddleware } from '@apollo/server/express4'; // Import Apollo's Express middleware for integrating ApolloServer with Express
-import { typeDefs, resolvers } from './schemas'; // Import GraphQL type definitions (typeDefs) and resolvers (functions to resolve GraphQL queries)
+import { typeDefs, resolvers } from './schemas/index.js'; // Import GraphQL type definitions (typeDefs) and resolvers (functions to resolve GraphQL queries)
 import { authenticateToken } from './utils/auth.js'; // Import the authentication middleware for handling user authentication via tokens
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);

@@ -1,19 +1,24 @@
 import dotenv from 'dotenv';
-dotenv.config();
+dotenv.config();  // Load the environment variables
+
+console.log("Environment variables:", process.env);  // Add this for debugging
 
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://pedrochipana:Rn3ZI7Loxe94dUta@cluster0.vxnen.mongodb.net/googleBooks?retryWrites=true&w=majority&appName=Cluster0';
-console.log(process.env.MONGODB_URI);
+const MONGODB_URI = process.env.MONGODB_URI;
 
-const db = async (): Promise<typeof mongoose.connection> => {
+if (!MONGODB_URI) {
+  throw new Error("MONGODB_URI is not defined in environment variables.");
+}
+
+const db = async () => {
   try {
     await mongoose.connect(MONGODB_URI);
-    console.log('Database connected.');
+    console.log("Database connected.");
     return mongoose.connection;
   } catch (error) {
-    console.error('Database connection error:', error);
-    throw new Error('Database connection failed.');
+    console.error("Database connection error:", error);
+    throw new Error("Database connection failed.");
   }
 };
 

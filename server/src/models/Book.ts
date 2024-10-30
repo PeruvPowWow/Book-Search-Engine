@@ -1,39 +1,48 @@
-import { Schema, type Document } from 'mongoose';
+// Import Mongoose for schema creation and types
+import { Schema, type Document } from "mongoose";
 
+// Define a TypeScript interface that extends Mongoose's Document interface to ensure the shape of a Book document
 export interface BookDocument extends Document {
-  bookId: string;
-  title: string;
   authors: string[];
   description: string;
+  title: string;
+  bookId: string; // Unique ID for the book from Google Books API
   image: string;
   link: string;
 }
 
-// This is a subdocument schema, it won't become its own model but we'll use it as the schema for the User's `savedBooks` array in User.js
+// Define the schema for the Book model, specifying how each field should be structured
 const bookSchema = new Schema<BookDocument>({
+  // An array of author names for the book
   authors: [
     {
       type: String,
     },
   ],
+  // Description of the book, required field
   description: {
-    type: String,
-  },
-  // saved book id from GoogleBooks
-  bookId: {
     type: String,
     required: true,
   },
-  image: {
-    type: String,
-  },
-  link: {
-    type: String,
-  },
+  // Title of the book, required field
   title: {
     type: String,
     required: true,
   },
+  // Unique book ID from the Google Books API, required field
+  bookId: {
+    type: String,
+    required: true,
+  },
+  // URL for the book's cover image (optional)
+  image: {
+    type: String,
+  },
+  // External link to the book's page (optional)
+  link: {
+    type: String,
+  },
 });
 
+// Export the Book schema to use in the User model
 export default bookSchema;

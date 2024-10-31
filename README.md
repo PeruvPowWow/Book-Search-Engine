@@ -79,5 +79,14 @@ npm run develop
 
 
 ## Questions
-Please visity my GitHub profile: https://github.com/PeruvPowWow
-For additional questions, please contact me at: pedro.chipana94@gmail.com
+
+- Please visity my GitHub profile: https://github.com/PeruvPowWow
+- For additional questions, please contact me at: pedro.chipana94@gmail.com
+
+## Deployed Link
+
+https://book-search-engine-v8u5.onrender.com/
+
+## GitHub Repository
+
+https://github.com/PeruvPowWow/Book-Search-Engine
